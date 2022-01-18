@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="/dist/output.css" rel="stylesheet" />
+    <script src="/dist/bundle.js" defer></script>
+    <title>Tailwindcss and Alpine.js Template by JessRascal</title>
+  </head>
+  <body>
+    <!-- DELETE ME! This is just to prove it's working -->
+    <div class="p-4 container mx-auto flex flex-wrap justify-center">
+      <!-- TODO: add instructions in README for getting up and running -->
+      <div
+        class="min-w-[430px] min-h-[265px] p-10 m-2 rounded-2xl drop-shadow-md bg-gradient-to-br from-cyan-500 to-blue-300"
+      >
+        <div>
+          <p>
+            This card is styled, so
+            <strong class="hover:text-violet-700">Tailwindcss</strong> is
+            working 💨
+          </p>
+          <br />
+          <div x-data="{ open: false }">
+            <button
+              class="bg-violet-500 hover:bg-violet-700 text-white font-bold py-2 px-4 rounded"
+              @click="open = !open"
+            >
+              Alpine.js Test
+            </button>
+            <p x-show="open" class="mt-3">
+              This is displaying, so
+              <strong class="hover:text-violet-700">Alpine.js</strong> is
+              working 🗻
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
