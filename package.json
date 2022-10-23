@@ -4,10 +4,16 @@
   "description": "Starting point for a Tailwindcss and Alpine.js site (using NPM).",
   "main": "index.js",
   "scripts": {
-    "start": "npm run tailwind-watch",
-    "tailwind-watch": "npx tailwindcss -i ./src/input.css -o ./dist/output.css --watch",
-    "alpinejs-dev": "npx esbuild ./src/index.js --outfile=dist/bundle.js --bundle",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "npx concurrently \"npm run tailwind-dev\" \"npm run alpine-dev\"",
+    "build": "npm run clean && npm run tailwind-build && npm run alpine-build",
+    "alpine": "npx -y esbuild ./src/index.js --outfile=dist/bundle.js --bundle",
+    "alpine-build": "npm run alpine -- --minify",
+    "alpine-dev": "npm run alpine -- --sourcemap --watch",
+    "tailwind": "npx -y tailwindcss -i ./src/input.css -o ./dist/output.css",
+    "tailwind-build": "npm run tailwind -- --minify",
+    "tailwind-dev": "npm run tailwind -- --watch",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "clean": "npx -y rimraf dist"
   },
   "repository": {
     "type": "git",
@@ -25,10 +31,8 @@
     "url": "https://github.com/JessRascal/tailwind-with-alpine-npm-template/issues"
   },
   "homepage": "https://github.com/JessRascal/tailwind-with-alpine-npm-template#readme",
-  "dependencies": {
-    "alpinejs": "^3.10.4"
-  },
   "devDependencies": {
+    "alpinejs": "^3.10.4",
     "tailwindcss": "^3.2.1"
   }
 }
